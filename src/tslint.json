@@ -4,14 +4,15 @@
         "directive-selector": [
             true,
             "attribute",
-            "app",
+            "jde",
             "camelCase"
         ],
         "component-selector": [
             true,
             "element",
-            "app",
+            "jde",
             "kebab-case"
-        ]
+        ],
+        "no-inferrable-types": false
     }
 }
