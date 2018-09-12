@@ -3,21 +3,23 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { PaneModule } from './pane/pane.module';
-import { WindowManagerComponent } from './window-manager/window-manager.component';
+
 import { TaskbarComponent } from './taskbar/taskbar.component';
+import { WindowManagerService } from './window-manager.service';
+import { WindowManagerContainerComponent } from './window-manager-container.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    WindowManagerComponent,
-    TaskbarComponent,
-  ],
   imports: [
     BrowserModule,
     PaneModule,
   ],
-  providers: [],
+  declarations: [
+    AppComponent,
+    TaskbarComponent,
+    WindowManagerContainerComponent,
+  ],
+  entryComponents: [ WindowManagerContainerComponent ],
+  providers: [WindowManagerService],
   bootstrap: [AppComponent],
-  entryComponents: [WindowManagerComponent]
 })
 export class AppModule { }

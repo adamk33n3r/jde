@@ -1,6 +1,6 @@
-import { Component, OnInit, Renderer2, ElementRef, Input, HostListener } from '@angular/core';
+import { Component, OnInit, Renderer2, ElementRef, Input, HostListener, Inject, forwardRef } from '@angular/core';
 
-import { WindowManagerComponent } from '../window-manager/window-manager.component';
+import { WindowManagerService } from '../window-manager.service';
 
 @Component({
   selector: 'jde-pane',
@@ -21,9 +21,14 @@ export class PaneComponent implements OnInit {
   private dragX: number;
   private dragY: number;
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2, private manager: WindowManagerComponent) { }
+  constructor(
+    private elementRef: ElementRef,
+    private renderer: Renderer2,
+    @Inject(forwardRef(() => WindowManagerService)) private manager: WindowManagerService,
+  ) {}
 
   ngOnInit() {
+    console.log(this.manager);
     this.manager.registerPane(this);
   }
 

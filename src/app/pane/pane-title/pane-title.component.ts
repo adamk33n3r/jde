@@ -21,6 +21,10 @@ export class PaneTitleComponent implements OnInit {
 
   @HostListener('mousedown', ['$event'])
   public onMouseDown(event: MouseEvent) {
+    if (event.button !== 0) {
+      return;
+    }
+
     this.clickedPosX = event.offsetX;
     this.clickedPosY = event.offsetY;
     this.pane.startDrag(event.offsetX, event.offsetY);

@@ -1,10 +1,16 @@
 import { Component } from '@angular/core';
+import { WindowManagerService } from './window-manager.service';
 
 @Component({
-  selector: 'app-root',
+  selector: 'jde-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'jde';
+
+  constructor(private manager: WindowManagerService) {}
+
+  public createPane() {
+    this.manager.createPane();
+  }
 }
