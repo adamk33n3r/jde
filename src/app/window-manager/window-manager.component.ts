@@ -1,4 +1,12 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Renderer2,
+  ComponentFactoryResolver,
+  Injector,
+  ViewContainerRef,
+  ViewChild,
+} from '@angular/core';
 
 import { PaneComponent } from '../pane/pane.component';
 
@@ -12,16 +20,30 @@ export class WindowManagerComponent implements OnInit {
   // Priority Queue
   public panes: PaneComponent[] = [];
 
-  constructor(private renderer: Renderer2) { }
+  @ViewChild('target', { read: ViewContainerRef })
+  private viewContainerRef: ViewContainerRef;
+
+
+  constructor(
+    private renderer: Renderer2,
+    private resolver: ComponentFactoryResolver,
+    private injector: Injector,
+  ) { }
 
   ngOnInit() {
+    this.createPane();
+    this.createPane();
   }
 
   public registerPane(pane: PaneComponent) {
     this.panes.push(pane);
   }
 
-  public createPane() {}
+  public createPane() {
+    const factory = this.resolver.resolveComponentFactory(PaneComponent);
+    // const comp = factory.create(this.injector);
+    this.viewContainerRef.createComponent(factory);
+  }
 
   public bringToFront(pane: PaneComponent) {
     this.panes.forEach((p) => {

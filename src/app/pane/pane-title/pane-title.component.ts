@@ -21,7 +21,6 @@ export class PaneTitleComponent implements OnInit {
 
   @HostListener('mousedown', ['$event'])
   public onMouseDown(event: MouseEvent) {
-    console.log('mouse down');
     this.clickedPosX = event.offsetX;
     this.clickedPosY = event.offsetY;
     this.pane.startDrag(event.offsetX, event.offsetY);
@@ -38,13 +37,10 @@ export class PaneTitleComponent implements OnInit {
       return;
     }
 
-    console.log('mouse move');
-
     this.pane.move(event);
   }
 
   public onActionClick(event: Event) {
-    console.log('action click');
     event.stopPropagation();
   }
 

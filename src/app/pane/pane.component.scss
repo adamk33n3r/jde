@@ -7,9 +7,10 @@
     height: 400px;
     box-shadow: 0 0 $pane-border-radius 0 black;
     border-radius: $pane-border-radius;
+    border: 1px solid black;
 
     &.dragging {
-        box-shadow: 5px 5px 20px 0 black;
+        box-shadow: 0 0 20px 0 black;
     }
 }
 

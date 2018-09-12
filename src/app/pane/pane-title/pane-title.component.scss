@@ -11,6 +11,8 @@
     cursor: move;
     user-select: none;
     font-family: 'Courier New', Courier, monospace;
+
+    border-bottom: 1px solid black;
     
     h1 {
         display: inline-block;
@@ -25,6 +27,21 @@
         height: 50px;
         width: 50px;
 
-        // background: peru;
+        // background: rgba(0, 0, 0, 0.1);
+        background: transparent;
+        border: none;
+        border-left: 1px solid black;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &:active {
+            background: rgba(0, 0, 0, 0.1);
+        }
     }
 }

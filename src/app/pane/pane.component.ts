@@ -24,7 +24,6 @@ export class PaneComponent implements OnInit {
   constructor(private elementRef: ElementRef, private renderer: Renderer2, private manager: WindowManagerComponent) { }
 
   ngOnInit() {
-    console.log(this.elementRef.nativeElement);
     this.manager.registerPane(this);
   }
 
@@ -34,7 +33,6 @@ export class PaneComponent implements OnInit {
   }
 
   public startDrag(offsetX, offsetY) {
-    console.log('starting drag', offsetX, offsetY);
     this.dragX = offsetX;
     this.dragY = offsetY;
     this.dragging = true;
@@ -49,7 +47,6 @@ export class PaneComponent implements OnInit {
     const x = event.clientX - this.dragX;
     const y = event.clientY - this.dragY;
 
-    console.log(x, y);
     this.renderer.setStyle(this.elementRef.nativeElement, 'left', `${x}px`);
     this.renderer.setStyle(this.elementRef.nativeElement, 'top', `${y}px`);
   }
