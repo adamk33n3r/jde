@@ -24,24 +24,24 @@ export class PaneComponent implements OnInit {
   constructor(
     private elementRef: ElementRef,
     private renderer: Renderer2,
-    @Inject(forwardRef(() => WindowManagerService)) private manager: WindowManagerService,
+    // @Inject(forwardRef(() => WindowManagerService)) private manager: WindowManagerService,
   ) {}
 
   ngOnInit() {
-    console.log(this.manager);
-    this.manager.registerPane(this);
+    // console.log(this.manager);
+    // this.manager.registerPane(this);
   }
 
   @HostListener('mousedown')
   public onMouseDown() {
-    this.manager.bringToFront(this);
+    // this.manager.bringToFront(this);
   }
 
   public startDrag(offsetX, offsetY) {
     this.dragX = offsetX;
     this.dragY = offsetY;
     this.dragging = true;
-    this.manager.bringToFront(this);
+    // this.manager.bringToFront(this);
   }
 
   public stopDrag() {
