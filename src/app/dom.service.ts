@@ -5,6 +5,7 @@ import {
   Injector,
   ApplicationRef,
   EmbeddedViewRef,
+  ComponentRef,
 } from '@angular/core';
 
 @Injectable({
@@ -26,8 +27,9 @@ export class DomService {
     return compRef;
   }
 
-  public appendChild(child: HTMLElement, parent: HTMLElement = document.body) {
-    parent.appendChild(child);
+  public appendChild(child: ComponentRef<any>, parent: HTMLElement = document.body) {
+    const childEle = (child.hostView as EmbeddedViewRef<any>).rootNodes[0];
+    parent.appendChild(childEle);
   }
 
 }

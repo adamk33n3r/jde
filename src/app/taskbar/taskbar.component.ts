@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { WindowManagerService } from '../window-manager.service';
+import { PaneComponent } from '../pane/pane.component';
+
 @Component({
   selector: 'jde-taskbar',
   templateUrl: './taskbar.component.html',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskbarComponent implements OnInit {
 
+  public manager: WindowManagerService;
+
   constructor() { }
 
-  ngOnInit() {
+  public ngOnInit() {
+  }
+
+  public onClickPane(pane: PaneComponent) {
+    this.manager.bringToFront(pane);
   }
 
 }

@@ -18,7 +18,10 @@ import { WindowManagerContainerComponent } from './window-manager-container.comp
     TaskbarComponent,
     WindowManagerContainerComponent,
   ],
-  entryComponents: [ WindowManagerContainerComponent ],
+  entryComponents: [
+    WindowManagerContainerComponent,
+    TaskbarComponent,
+  ],
   providers: [WindowManagerService],
   bootstrap: [AppComponent],
 })

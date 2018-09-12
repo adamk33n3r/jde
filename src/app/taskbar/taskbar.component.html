@@ -1,5 +1,6 @@
 <div class='taskbar'>
   <button>Start</button>
+  <button *ngFor='let pane of manager.panes' (click)='onClickPane(pane)'>{{ pane.title }}</button>
   <div class='flex-spacer'></div>
   <div class='clock'>2:31 PM</div>
 </div>
