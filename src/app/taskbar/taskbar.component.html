@@ -2,7 +2,9 @@
   <jde-start-menu #startMenu [launcher]='launcher'></jde-start-menu>
   <button class='start' (click)='startMenu.show()' #launcher>Start</button>
 
-  <button *ngFor='let pane of manager.panes' (click)='onClickPane(pane)'>{{ pane.title }}</button>
+  <div class='pane-container'>
+    <button *ngFor='let pane of manager.panes' (click)='onClickPane(pane)'>{{ pane.title }}</button>
+  </div>
   <div class='flex-spacer'></div>
   <div class='clock'>2:31 PM</div>
 </div>
