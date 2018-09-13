@@ -7,6 +7,7 @@ import { PaneModule } from './pane/pane.module';
 import { TaskbarComponent } from './taskbar/taskbar.component';
 import { WindowManagerService } from './window-manager.service';
 import { WindowManagerContainerComponent } from './window-manager-container.component';
+import { StartMenuComponent } from './start-menu/start-menu.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { WindowManagerContainerComponent } from './window-manager-container.comp
     AppComponent,
     TaskbarComponent,
     WindowManagerContainerComponent,
+    StartMenuComponent,
   ],
   entryComponents: [
     WindowManagerContainerComponent,

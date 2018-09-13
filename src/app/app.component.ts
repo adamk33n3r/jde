@@ -8,7 +8,9 @@ import { WindowManagerService } from './window-manager.service';
 })
 export class AppComponent {
 
-  constructor(private manager: WindowManagerService) {}
+  constructor(private manager: WindowManagerService) {
+    this.manager.init();
+  }
 
   public createPane() {
     this.manager.createPane();

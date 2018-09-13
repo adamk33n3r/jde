@@ -5,11 +5,35 @@
     width: 100%;
     height: 50px;
     display: flex;
+    font-size: 20px;
+    z-index: 9999;
+
+    .start {
+        flex: 0 0 150px;
+        // width: 150px;
+        height: 100%;
+        font-size: 20px;
+        background: lightseagreen;
+        border: none;
+        cursor: pointer;
+        color: white;
+        text-shadow: 1px 1px black;
+        outline: none;
+
+        &:hover {
+            background: lighten(lightseagreen, 5%);
+        }
+    }
 
     button {
+        // flex: 1 0 200px;
+        width: 200px;
+        font-size: 20px;
         height: 100%;
         padding: 0 20px;
         cursor: pointer;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .flex-spacer {
@@ -18,6 +42,8 @@
 
     .clock {
         align-self: center;
-        margin-right: 10px;
+        margin: 0 10px;
+        flex: 0 0 80px;
+        text-align: right;
     }
 }

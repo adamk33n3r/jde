@@ -12,8 +12,6 @@ export class TaskbarComponent implements OnInit {
 
   public manager: WindowManagerService;
 
-  constructor() { }
-
   public ngOnInit() {
   }
 

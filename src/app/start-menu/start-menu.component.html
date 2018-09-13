@@ -1,0 +1,9 @@
+<div class='menu' [hidden]='!showMenu' #menu>
+  <div class='header'>
+    <div class='profile'></div>
+  </div>
+  <div class='tiles'>
+    <button class='tile' (click)='createPane()'>Create Pane</button>
+    <button class='tile' (click)='createPane(10)'>Create 10 Panes</button>
+  </div>
+</div>

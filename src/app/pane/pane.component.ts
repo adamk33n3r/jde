@@ -41,7 +41,7 @@ export class PaneComponent implements OnInit {
     this.dragX = offsetX;
     this.dragY = offsetY;
     this.dragging = true;
-    this.manager.bringToFront(this);
+    // this.manager.bringToFront(this);
   }
 
   public stopDrag() {

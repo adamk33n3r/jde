@@ -1,0 +1,33 @@
+.menu {
+    position: absolute;
+    bottom: 50px;
+    width: 400px;
+    height: 500px;
+    background: purple;
+    border: 1px solid black;
+
+    .header {
+        height: 70px;
+        background: rgba(0, 0, 0, 0.1);
+
+        .profile {
+            background: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            float: right;
+            margin: 10px;
+        }
+    }
+
+    .tiles {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .tile {
+            width: 100px;
+            height: 100px;
+        }
+    }
+}

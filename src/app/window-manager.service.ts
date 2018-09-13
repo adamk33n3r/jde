@@ -18,17 +18,19 @@ export class WindowManagerService {
 
   constructor(
     private dom: DomService,
-    rendererFactory: RendererFactory2,
+    private rendererFactory: RendererFactory2,
   ) {
-    this.renderer = rendererFactory.createRenderer(null, null);
+    this.renderer = this.rendererFactory.createRenderer(null, null);
+  }
+
+  public init() {
+    this.taskbarRef = this.dom.createComponent(TaskbarComponent);
+    this.taskbarRef.instance.manager = this;
+    this.dom.appendChild(this.taskbarRef);
 
     const comp = this.dom.createComponent(WindowManagerContainerComponent);
     this.dom.appendChild(comp);
     this.containerElement = comp.instance.elementRef.nativeElement;
-
-    this.taskbarRef = this.dom.createComponent(TaskbarComponent);
-    this.taskbarRef.instance.manager = this;
-    this.dom.appendChild(this.taskbarRef);
   }
 
   public registerPane(pane: PaneComponent) {
@@ -39,23 +41,25 @@ export class WindowManagerService {
     const compRef = this.dom.createComponent(PaneComponent);
     compRef.instance.title = '' + Math.random();
     this.dom.appendChild(compRef, this.containerElement);
-    this.setPosition(compRef.instance, 50, 50);
+    this.setPosition(compRef.instance, 425, 200);
   }
 
   public bringToFront(pane: PaneComponent) {
+    // Rewrite with priority queue
     this.panes.forEach((p) => {
       if (pane === p) {
         this.renderer.setStyle(p.element, 'z-index', this.panes.length - 1);
       } else {
-        const currentZ = p.element.style.getPropertyValue('z-index');
+        let currentZ = +p.element.style.getPropertyValue('z-index');
+        currentZ = currentZ === 0 ? 1 : currentZ;
         this.renderer.setStyle(p.element, 'z-index', +currentZ - 1);
       }
     });
   }
 
   private setPosition(pane: PaneComponent, x: number, y: number) {
-    this.renderer.setStyle(pane.element, 'top', x);
-    this.renderer.setStyle(pane.element, 'left', y);
+    this.renderer.setStyle(pane.element, 'top', `${y}px`);
+    this.renderer.setStyle(pane.element, 'left', `${x}px`);
   }
 
 }

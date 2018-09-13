@@ -22,7 +22,7 @@ export class DomService {
   public createComponent<T>(component: Type<T>) {
     const factory = this.resolver.resolveComponentFactory(component);
     const compRef = factory.create(this.injector);
-    console.log(compRef.location, (compRef.hostView as EmbeddedViewRef<any>).rootNodes);
+    // console.log(compRef.location, (compRef.hostView as EmbeddedViewRef<any>).rootNodes);
     this.appRef.attachView(compRef.hostView);
     return compRef;
   }
