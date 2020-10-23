@@ -13,7 +13,7 @@ export class StartMenuComponent implements OnInit {
   @Input()
   public launcher: HTMLElement;
 
-  @ViewChild('menu')
+  @ViewChild('menu', { static: true })
   public menuRef: ElementRef;
 
   constructor(private windowMgr: WindowManagerService) { }
