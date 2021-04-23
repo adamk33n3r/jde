@@ -39,9 +39,12 @@ export class StartMenuComponent implements OnInit {
 
   @HostListener('document:click', ['$event'])
   public onOutsideClick($event: MouseEvent) {
-    console.log('outside click', this.launcher);
+    console.log('outside click', this.launcher, $event.target);
     // TODO: Needs to check if you click on a child of menuRef
-    if ($event.target === this.menuRef.nativeElement || $event.target === this.launcher) {
+    if ($event.target === this.menuRef.nativeElement ||
+      ($event.target === this.launcher) ||
+      (this.menuRef.nativeElement as HTMLElement).contains($event.target as HTMLElement)
+    ) {
       return;
     }
 

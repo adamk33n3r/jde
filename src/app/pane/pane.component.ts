@@ -1,4 +1,5 @@
-import { Component, OnInit, Renderer2, ElementRef, Input, HostListener, Inject, forwardRef } from '@angular/core';
+import { Component, OnInit, Renderer2, ElementRef, Input, HostListener, Inject, forwardRef, Injector, InjectionToken, EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs';
 
 import { WindowManagerService } from '../window-manager.service';
 
@@ -18,30 +19,37 @@ export class PaneComponent implements OnInit {
     return this.elementRef.nativeElement;
   }
 
+  public onMouseDown: Subject<PaneComponent> = new Subject();
+  public onStartDrag: Subject<PaneComponent> = new Subject();
+
   private dragX: number;
   private dragY: number;
 
   constructor(
     private elementRef: ElementRef,
     private renderer: Renderer2,
-    @Inject(forwardRef(() => WindowManagerService)) private manager: WindowManagerService,
-  ) {}
+    // private manager: WindowManagerService,
+    // $injector: Injector,
+  ) {
+    // const token = new InjectionToken<WindowManagerService>('WindowManagerService');
+    // this.manager = $injector.get(token);
+    // console.log(this.manager);
+  }
 
-  ngOnInit() {
-    console.log(this.manager);
-    this.manager.registerPane(this);
+  public ngOnInit() {
+    // console.log(this.manager);
   }
 
   @HostListener('mousedown')
-  public onMouseDown() {
-    this.manager.bringToFront(this);
+  public mouseDown() {
+    this.onMouseDown.next(this);
   }
 
   public startDrag(offsetX, offsetY) {
     this.dragX = offsetX;
     this.dragY = offsetY;
     this.dragging = true;
-    // this.manager.bringToFront(this);
+    this.onStartDrag.next(this);
   }
 
   public stopDrag() {

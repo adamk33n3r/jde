@@ -33,18 +33,18 @@ export class WindowManagerService {
     this.containerElement = comp.instance.elementRef.nativeElement;
   }
 
-  public registerPane(pane: PaneComponent) {
-    this.panes.push(pane);
-  }
-
   public createPane() {
     const compRef = this.dom.createComponent(PaneComponent);
     compRef.instance.title = '' + Math.random();
     this.dom.appendChild(compRef, this.containerElement);
     this.setPosition(compRef.instance, 425, 200);
+    compRef.instance.onMouseDown.subscribe(this.bringToFront.bind(this));
+    compRef.instance.onStartDrag.subscribe(this.bringToFront.bind(this));
+    this.panes.push(compRef.instance);
   }
 
   public bringToFront(pane: PaneComponent) {
+    console.log(pane);
     // Rewrite with priority queue
     this.panes.forEach((p) => {
       if (pane === p) {
